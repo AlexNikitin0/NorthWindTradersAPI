@@ -6,6 +6,7 @@ import com.pluralsight.NorthWindTradersAPI.models.Category;
 import com.pluralsight.NorthWindTradersAPI.models.Product;
 import com.pluralsight.NorthWindTradersAPI.models.Store;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -44,5 +45,24 @@ public class ProductsController {
         return jdbcCategoryDAO.getCategoryByID(id);
     }
 
+
+    // post new product
+
+    @RequestMapping(path = "/addproduct", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public String addProduct(@RequestBody Product product){
+        jdbcProductDAO.getNewProduct(product);
+        return "Your Product has been added";
+    }
+
+
+    // post new category
+
+    @RequestMapping(path = "/addcategory", method = RequestMethod.POST)
+    @ResponseStatus(value = HttpStatus.CREATED)
+    public String addProduct(@RequestBody Category category){
+        jdbcCategoryDAO.getNewCategory(category);
+        return "Your Category has been added";
+    }
 
 }

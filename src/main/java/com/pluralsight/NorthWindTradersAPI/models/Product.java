@@ -12,6 +12,14 @@ public class Product {
         this.unitPrice = unitPrice;
     }
 
+    public Product(){
+        this.productID = 3;
+        this.categoryID = 3;
+        this.productName = "Bike";
+        this.unitPrice = 2300;
+
+    }
+
     public int getProductID() {
         return productID;
     }

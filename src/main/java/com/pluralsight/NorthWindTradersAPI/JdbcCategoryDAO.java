@@ -68,6 +68,22 @@ public class JdbcCategoryDAO {
             return products;
         }
 
+
+    public void getNewCategory(Category category){
+        String sql ="INSERT INTO categories (CategoryName) VALUES (?)";
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+        ) {
+            statement.setString(1,category.getCategoryName());
+            statement.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+
     }
 
 

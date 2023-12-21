@@ -65,4 +65,26 @@ public class JdbcProductDAO {
         return products;
     }
 
-}
+        //post
+    public void getNewProduct(Product product){
+        String sql ="INSERT INTO products (ProductName,CategoryID,UnitPrice) VALUES (?,?,?)";
+        ArrayList<Product> products = new ArrayList<>();
+        try (Connection connection = dataSource.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ) {
+            statement.setString(1,product.getProductName());
+            statement.setInt(2,product.getCategoryID());
+            statement.setDouble(3,product.getUnitPrice());
+            statement.executeUpdate();
+
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    }
+
+
+
+
